@@ -1,0 +1,17 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ログイン</title>
+</head>
+  <body>
+    <form action="" method="post">
+      {% csrf_token %}
+      <section>
+        {{ form.as_p }}
+      </section>
+      <section>
+        <button type="submit">ログイン</button>
+      </section>
+    </form>
+  </body>
+</html>
