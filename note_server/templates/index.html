@@ -1,8 +1,15 @@
+{% load static %}
 <html>
 <head>
   <meta charset="utf-8">
   <title>ノート</title>
 </head>
 <body>
+  <div class="row">
+    {% verbatim %}
+    <div id="app">
+    {% endverbatim %}
+  </div>
+<script src="{% static 'client/index.js' %}"></script>
 </body>
 </html>
