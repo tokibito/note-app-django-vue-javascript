@@ -15,3 +15,6 @@ class Page(models.Model):
     content = models.TextField("内容")
     created_at = models.DateTimeField("作成日時", auto_now_add=True)
     updated_at = models.DateTimeField("更新日時", auto_now=True)
+
+    def __str__(self):
+        return "{title}".format(title=self.title)

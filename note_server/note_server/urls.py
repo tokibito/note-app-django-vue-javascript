@@ -23,10 +23,10 @@ urlpatterns = [
         name='logout'),
 
     # API
-    path('docs/', include_docs_urls(title='CMS API', public=False)),
+    path('docs/', include_docs_urls(title='API', public=False)),
     path('note/', include('note.urls')),
 
-    path('', login_required(render), kwargs={'template_name': 'index.html'}, name='top'),
+    path('', login_required(render), kwargs={'template_name': 'index.html'}, name='index'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

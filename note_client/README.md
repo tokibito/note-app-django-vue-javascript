@@ -12,6 +12,12 @@ npm i
 npm run webpack
 ```
 
+## watch build
+
+```
+npm run webpack -- -w
+```
+
 ## clean
 
 ```

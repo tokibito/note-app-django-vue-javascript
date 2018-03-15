@@ -5,6 +5,16 @@
   <title>ノート</title>
 </head>
 <body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">ノート</a>
+    <div class="my-2 my-lg-0">
+      {% if user.is_superuser %}
+      <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'admin:index' %}">管理画面</a>
+      {% endif %}
+      <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'logout' %}">ログアウト</a>
+    </div>
+  </nav>
+
   <div class="row">
     {% verbatim %}
     <div id="app">

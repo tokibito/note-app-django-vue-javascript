@@ -1,17 +1,30 @@
+{% load static %}
 <html>
 <head>
   <meta charset="utf-8">
   <title>ログイン</title>
 </head>
-  <body>
-    <form action="" method="post">
-      {% csrf_token %}
-      <section>
-        {{ form.as_p }}
-      </section>
-      <section>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">ノート</a>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <form action="" method="post" class="col-12 mt-2">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="{{ form.username.id_for_label }}">ユーザー名</label>
+          <input type="text" name="{{ form.username.html_name }}" id="{{ form.username.id_for_label }}" class="form-control" placeholder="User name" required autofocus>
+        </div>
+        <div class="form-group">
+          <label for="{{ form.password.id_for_label }}">Password</label>
+          <input type="password" name="{{ form.password.html_name }}" id="{{ form.password.id_for_label }}" class="form-control" placeholder="Password" required>
+        </div>
         <button type="submit">ログイン</button>
-      </section>
-    </form>
-  </body>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'client/common.js' %}"></script>
+</body>
 </html>

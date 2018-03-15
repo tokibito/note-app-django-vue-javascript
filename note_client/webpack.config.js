@@ -4,7 +4,8 @@ var path = require('path');
 module.exports = {
   entry: {
     babel_polyfill: 'babel-polyfill',
-    index: './src/index.js'
+    index: './src/index.js',
+    common: './src/common.js'
   },
   output: {
     path: path.resolve('./build'),
