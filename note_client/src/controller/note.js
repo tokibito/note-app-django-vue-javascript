@@ -19,6 +19,10 @@ class NoteController {
       this.pages = instances
     })
   }
+
+  selectPage(page) {
+    this.selectedPage = page;
+  }
 }
 
 export {

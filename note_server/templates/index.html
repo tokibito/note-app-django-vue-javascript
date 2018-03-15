@@ -18,6 +18,12 @@
   <div class="row">
     {% verbatim %}
     <div id="app">
+      <index
+        :pages="controller.pages"
+        :selected-page="controller.selectedPage"
+        @select-page="selectPage"
+      ></index>
+    </div>
     {% endverbatim %}
   </div>
 <script src="{% static 'client/index.js' %}"></script>
