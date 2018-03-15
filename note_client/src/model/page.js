@@ -1,12 +1,13 @@
 class Page {
   constructor(
       id=null, title='', content=null, createdAt=null,
-      updatedAt=null) {
+      updatedAt=null, taint=false) {
     this.id = id
-    this.title = title
-    this.content = content
+    this._title = title
+    this._content = content
     this.createdAt = createdAt
     this.updatedAt = createdAt
+    this.taint = taint
   }
 
   static fromData(data) {
@@ -22,9 +23,31 @@ class Page {
   toData() {
     return {
       id: this.id,
-      title: this.title,
-      content: this.content
+      title: this._title,
+      content: this._content
     }
+  }
+
+  untaint() {
+    this.taint = false
+  }
+
+  get title() {
+    return this._title
+  }
+
+  set title(value) {
+    this._title = value
+    this.taint = true
+  }
+
+  get content() {
+    return this._content
+  }
+
+  set content(value) {
+    this._content = value
+    this.taint = true
   }
 }
 
