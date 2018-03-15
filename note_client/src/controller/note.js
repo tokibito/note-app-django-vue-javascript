@@ -23,6 +23,9 @@ class NoteController {
   selectPage(page) {
     this.selectedPage = page;
   }
+
+  save() {
+  }
 }
 
 export {

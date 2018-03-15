@@ -3,8 +3,8 @@
   <li
     class="list-group-item"
     v-for="(page, index) in pages"
-    v-bind:class="{active: selected(page)}"
-    v-on:click="$emit('select-page', page)">
+    :class="{active: selected(page)}"
+    @click="$emit('select-page', page)">
     {{ page.title }}
   </li>
 </ul>
@@ -14,7 +14,7 @@
 module.exports = {
   props: ['pages', 'selectedPage'],
   methods: {
-    selected: function (page) {
+    selected(page) {
       return this.selectedPage == page;
     }
   }
