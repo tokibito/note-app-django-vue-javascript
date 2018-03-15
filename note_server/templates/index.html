@@ -15,12 +15,14 @@
     </div>
   </nav>
 
-  <div class="row">
-    {% verbatim %}
-    <div id="app">
-      <note :controller="controller"></note>
+  <div class="container-fluid">
+    <div class="row">
+      {% verbatim %}
+      <div id="app">
+        <note :controller="controller"></note>
+      </div>
+      {% endverbatim %}
     </div>
-    {% endverbatim %}
   </div>
 <script src="{% static 'client/index.js' %}"></script>
 </body>

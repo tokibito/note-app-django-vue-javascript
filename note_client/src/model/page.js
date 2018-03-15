@@ -28,10 +28,6 @@ class Page {
     }
   }
 
-  untaint() {
-    this.taint = false
-  }
-
   get title() {
     return this._title
   }

@@ -1,0 +1,16 @@
+#app {
+  width: 100%
+}
+
+.index {
+  padding: 5px;
+  float: left;
+}
+
+.editor {
+  padding: 5px;
+  float: right;
+  .btn {
+    margin-bottom: 5px;
+  }
+}

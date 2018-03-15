@@ -20,6 +20,70 @@ class RestApi {
       })
     })
   }
+
+  create(instance, csrfToken=null) {
+    return new Promise((resolve, reject) => {
+      axios.post(
+        this.endpoint,
+        instance.toData(),
+        {
+          headers: {'X-CSRFToken': csrfToken}
+        })
+      .then((response) => {
+        console.log(response)
+        resolve(this.model.fromData(response.data))
+      })
+      .catch((error) => {
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
+  update(instance, csrfToken=null) {
+    return new Promise((resolve, reject) => {
+      axios.put(
+        this.endpoint + `${instance.id}`,
+        instance.toData(),
+        {
+          headers: {'X-CSRFToken': csrfToken}
+        })
+      .then((response) => {
+        console.log(response)
+        resolve(this.model.fromData(response.data))
+      })
+      .catch((error) => {
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
+  save(instance, csrfToken=null) {
+    if (instance.id == null) {
+      return this.create(instance, csrfToken)
+    } else {
+      return this.update(instance, csrfToken)
+    }
+  }
+
+  destroy(instance, csrfToken=null) {
+    return new Promise((resolve, reject) => {
+      axios.delete(
+        this.endpoint + `${instance.id}`,
+        {
+          headers: {'X-CSRFToken': csrfToken}
+        })
+      .then((response) => {
+        console.log(response)
+        resolve()
+      })
+      .catch((error) => {
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
 }
 
 export {

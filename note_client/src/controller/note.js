@@ -21,10 +21,34 @@ class NoteController {
   }
 
   selectPage(page) {
-    this.selectedPage = page;
+    if (this.selectedPage && this.selectedPage.taint) {
+      return
+    }
+    this.selectedPage = page
   }
 
-  save() {
+  save(csrfToken=null) {
+    this.pageApi.save(this.selectedPage, csrfToken)
+    .then((instance) => {
+      Object.assign(this.selectedPage, instance)
+    })
+  }
+
+  destroy(csrfToken=null) {
+    this.pageApi.destroy(this.selectedPage, csrfToken)
+    .then(() => {
+      this.selectedPage = null
+      this.load()
+    })
+  }
+
+  create(csrfToken=null) {
+    if (this.selectedPage && this.selectedPage.taint) {
+      return
+    }
+    let page = new Page
+    this.pages.push(page)
+    this.selectedPage = page
   }
 }
 
