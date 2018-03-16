@@ -22,6 +22,12 @@
       <button
         type="button"
         class="btn btn-success col-md-12"
+        @click="revert"
+        :disabled="!controller.selectedPage.taint"
+      >変更を破棄</button>
+      <button
+        type="button"
+        class="btn btn-success col-md-12"
         @click="destroy"
       >削除</button>
     </div>
@@ -74,6 +80,9 @@ module.exports = {
       if (!result) {
         this.showError(message)
       }
+    },
+    revert() {
+      this.controller.revert()
     },
     destroy() {
       this.controller.destroy(csrfToken.getCsrfTokenFromCookie(document.cookie))

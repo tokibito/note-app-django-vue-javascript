@@ -41,6 +41,12 @@ class NoteController {
     return [true, null]
   }
 
+  revert() {
+    if (this.selectedPage) {
+      this.selectedPage.revert()
+    }
+  }
+
   destroy(csrfToken=null) {
     if (this.selectedPage.id == null) {
       this.pages.pop()
