@@ -23,12 +23,12 @@
         type="button"
         class="btn btn-success col-md-12"
         @click="revert"
-        :disabled="!controller.selectedPage.taint"
+        :disabled="!controller.selectedPage.taint || !controller.selectedPage.id"
       >変更を破棄</button>
       <button
         type="button"
         class="btn btn-success col-md-12"
-        @click="destroy"
+        @click="$refs.confirmModal.show"
       >削除</button>
     </div>
     <button
@@ -43,8 +43,17 @@
     ref="errorModal"
     header-class="bg-danger text-light"
     body-class="text-danger"
-    ok-only>
+    ok-only
+    centered>
     {{ message }}
+  </b-modal>
+  <b-modal
+    title="確認"
+    ref="confirmModal"
+    header-class="bg-info text-light"
+    @ok="destroy"
+    centered>
+    削除してもよろしいですか？
   </b-modal>
 </div>
 </template>
