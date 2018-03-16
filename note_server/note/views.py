@@ -1,11 +1,11 @@
-from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import ModelViewSet
 
 from .models import Page
 from .serializers import PageSerializer
 
 
-class PageListCreateAPI(generics.ListCreateAPIView):
+class PageViewSet(ModelViewSet):
     serializer_class = PageSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -18,13 +18,3 @@ class PageListCreateAPI(generics.ListCreateAPIView):
         """追加時のフック
         """
         serializer.save(user=self.request.user)
-
-
-class PageRetrieveUpdateDestroyAPI(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = PageSerializer
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return Page.objects.filter(
-            user=self.request.user,
-        )

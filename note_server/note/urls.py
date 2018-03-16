@@ -1,14 +1,7 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from .views import PageListCreateAPI, PageRetrieveUpdateDestroyAPI
+from .views import PageViewSet
 
-urlpatterns = [
-    path(
-        'page/',
-        PageListCreateAPI.as_view(),
-        name='page-list'),
-    path(
-        'page/<int:pk>',
-        PageRetrieveUpdateDestroyAPI.as_view(),
-        name='page-detail'),
-]
+router = DefaultRouter()
+router.register(r'page', PageViewSet, base_name='page')
+urlpatterns = router.urls

@@ -43,7 +43,7 @@ class RestApi {
   update(instance, csrfToken=null) {
     return new Promise((resolve, reject) => {
       axios.put(
-        this.endpoint + `${instance.id}`,
+        this.endpoint + `${instance.id}/`,
         instance.toData(),
         {
           headers: {'X-CSRFToken': csrfToken}
@@ -70,7 +70,7 @@ class RestApi {
   destroy(instance, csrfToken=null) {
     return new Promise((resolve, reject) => {
       axios.delete(
-        this.endpoint + `${instance.id}`,
+        this.endpoint + `${instance.id}/`,
         {
           headers: {'X-CSRFToken': csrfToken}
         })
