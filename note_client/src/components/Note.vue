@@ -56,13 +56,23 @@ module.exports = {
     Editor
   },
   methods: {
+    showError(message) {
+      this.message = message
+      this.$refs.errorModal.show()
+    },
     selectPage(page) {
-      this.controller.selectPage(page)
+      let result, message
+      [result, message] = this.controller.selectPage(page)
+      if (!result) {
+        this.showError(message)
+      }
     },
     save() {
-      if (!this.controller.save(csrfToken.getCsrfTokenFromCookie(document.cookie))) {
-        this.message = "タイトルと内容は必須です。"
-        this.$refs.errorModal.show()
+      let result, message
+      [result, message] = this.controller.save(
+        csrfToken.getCsrfTokenFromCookie(document.cookie))
+      if (!result) {
+        this.showError(message)
       }
     },
     destroy() {

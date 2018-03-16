@@ -24,20 +24,21 @@ class NoteController {
 
   selectPage(page) {
     if (this.selectedPage && this.selectedPage.taint) {
-      return
+      return [false, "変更が保存されていません。"]
     }
     this.selectedPage = page
+    return [true, null]
   }
 
   save(csrfToken=null) {
     if (!this.selectedPage.title || !this.selectedPage.content) {
-      return false
+      return [false, "タイトルと内容は必須です。"]
     }
     this.pageApi.save(this.selectedPage, csrfToken)
     .then((instance) => {
       Object.assign(this.selectedPage, instance)
     })
-    return true
+    return [true, null]
   }
 
   destroy(csrfToken=null) {
