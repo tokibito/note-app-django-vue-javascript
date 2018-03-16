@@ -1,7 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './style/font-awesome-config.scss'
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+
 import { NoteController } from './controller/note'
 import { UrlBuilder } from './util/url-builder'
 import { API_URL } from './resource/urls'

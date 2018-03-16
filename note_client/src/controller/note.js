@@ -6,6 +6,7 @@ class NoteController {
     this.pageApi = new RestApi(apiUrl.NotePage, Page)
     this.pages = []
     this.selectedPage = null
+    this.loaded = false
   }
 
   ready() {
@@ -17,6 +18,7 @@ class NoteController {
     this.pageApi.list()
     .then((instances) => {
       this.pages = instances
+      this.loaded = true
     })
   }
 
@@ -28,13 +30,22 @@ class NoteController {
   }
 
   save(csrfToken=null) {
+    if (!this.selectedPage.title || !this.selectedPage.content) {
+      return false
+    }
     this.pageApi.save(this.selectedPage, csrfToken)
     .then((instance) => {
       Object.assign(this.selectedPage, instance)
     })
+    return true
   }
 
   destroy(csrfToken=null) {
+    if (this.selectedPage.id == null) {
+      this.pages.pop()
+      this.selectedPage = null
+      return
+    }
     this.pageApi.destroy(this.selectedPage, csrfToken)
     .then(() => {
       this.selectedPage = null
@@ -47,6 +58,7 @@ class NoteController {
       return
     }
     let page = new Page
+    page.taint = true
     this.pages.push(page)
     this.selectedPage = page
   }

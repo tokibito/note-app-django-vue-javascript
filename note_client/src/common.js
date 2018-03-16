@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './style/font-awesome-config.scss'
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 

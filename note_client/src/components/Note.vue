@@ -4,6 +4,7 @@
     class="index col-md-3"
     :pages="controller.pages"
     :selected-page="controller.selectedPage"
+    :class="{'fa': !controller.loaded, 'fa-spinner': !controller.loaded}"
     @select-page="selectPage"
   ></index>
   <div class="editor col-md-9">
@@ -16,7 +17,7 @@
         class="btn btn-primary col-md-12"
         accesskey="s"
         @click="save"
-        :class="{disabled:!controller.selectedPage.taint}"
+        :disabled="!controller.selectedPage.taint"
       >保存 (S)</button>
       <button
         type="button"
@@ -28,8 +29,17 @@
       type="button"
       class="btn btn-success col-md-12"
       @click="create"
+      :disabled="controller.selectedPage && controller.selectedPage.taint"
     >新規</button>
   </div>
+  <b-modal
+    title="エラー"
+    ref="errorModal"
+    header-class="bg-danger text-light"
+    body-class="text-danger"
+    ok-only>
+    {{ message }}
+  </b-modal>
 </div>
 </template>
 
@@ -50,13 +60,21 @@ module.exports = {
       this.controller.selectPage(page)
     },
     save() {
-      this.controller.save(csrfToken.getCsrfTokenFromCookie(document.cookie))
+      if (!this.controller.save(csrfToken.getCsrfTokenFromCookie(document.cookie))) {
+        this.message = "タイトルと内容は必須です。"
+        this.$refs.errorModal.show()
+      }
     },
     destroy() {
       this.controller.destroy(csrfToken.getCsrfTokenFromCookie(document.cookie))
     },
     create() {
       this.controller.create()
+    }
+  },
+  data() {
+    return {
+      message: ''
     }
   }
 }

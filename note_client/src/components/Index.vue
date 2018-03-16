@@ -5,7 +5,7 @@
     v-for="(page, index) in pages"
     :class="{active: selected(page)}"
     @click="$emit('select-page', page)">
-    <span v-if="page.taint">* </span>{{ page.title }}
+    <i class="fa" :class="{'fa-edit': page.taint, 'fa-file': !page.taint}"> {{ page.title }}&nbsp;</i>
   </li>
 </ul>
 </template>

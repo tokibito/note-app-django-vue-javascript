@@ -6,7 +6,7 @@
 </head>
 <body>
   <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'index' %}">ノート</a>
+    <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-book"> ノート</i></a>
     <div class="my-2 my-lg-0">
       {% if user.is_superuser %}
       <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'admin:index' %}">管理画面</a>
