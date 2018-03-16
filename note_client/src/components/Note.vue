@@ -35,7 +35,7 @@
       type="button"
       class="btn btn-success col-md-12"
       @click="create"
-      :disabled="controller.selectedPage && controller.selectedPage.taint"
+      :disabled="!controller.loaded || controller.selectedPage && controller.selectedPage.taint"
     >新規</button>
   </div>
   <b-modal

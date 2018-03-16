@@ -1,0 +1,20 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark" id="navigation">
+    <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-book"> ノート</i></a>
+    {% if user.is_authenticated %}
+    <div class="my-2 my-lg-0">
+      {% if user.is_superuser %}
+      <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'admin:index' %}">管理画面</a>
+      {% endif %}
+      <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'logout' %}">ログアウト</a>
+    </div>
+    {% endif %}
+  </nav>
+  {% block content %}{% endblock %}
+</body>
+</html>
