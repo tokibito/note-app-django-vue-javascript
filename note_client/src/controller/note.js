@@ -19,7 +19,6 @@ class NoteController {
    * エントリポイントからロード完了時に呼ばれるメソッド
    */
   ready() {
-    console.log('NoteController ready.')
     this.load()
   }
 
