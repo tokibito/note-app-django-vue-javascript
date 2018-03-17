@@ -3,6 +3,8 @@ from django.conf import settings
 
 
 class Page(models.Model):
+    """ページモデル
+    """
     class Meta:
         verbose_name = verbose_name_plural = "ページ"
         ordering = ('id',)

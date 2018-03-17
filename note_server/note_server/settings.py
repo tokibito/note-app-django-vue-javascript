@@ -13,6 +13,7 @@ SECRET_KEY = 'm*zw1rnybebk73wphlofum@=8or25eiphgvwu196_8us3na#y8'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+# django-debug-toolbarはINTERNAL_IPSからの通信でのみ有効になるため、VMのNATのアドレスを入れています
 INTERNAL_IPS = ['192.168.33.1']
 
 # Application definition
@@ -39,6 +40,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# デバッグ時のみミドルウェアを有効にします
 if DEBUG:
     MIDDLEWARE.append(
         'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -50,6 +52,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            # プロジェクト直下のtemplatesディレクトリにテンプレートファイルをまとめます
             os.path.join(BASE_DIR, 'templates'),
         ],
         'APP_DIRS': True,
@@ -111,6 +114,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# ビルドされたクライアントアプリケーションをDjangoのstaticfilesから参照します
 STATICFILES_DIRS = [
     ('client', os.path.join(os.path.dirname(BASE_DIR), 'note_client/build')),
 ]

@@ -5,6 +5,10 @@ from .models import Page
 
 
 class PageSerializer(serializers.ModelSerializer):
+    """Pageモデルのシリアライザ
+
+    更新系は、titleとcontentのみ許可
+    """
     class Meta:
         model = Page
         fields = [
