@@ -32,13 +32,13 @@ class NoteController {
 
   save(csrfToken=null) {
     if (!this.selectedPage.title || !this.selectedPage.content) {
-      return [false, "タイトルと内容は必須です。"]
+      return [false, "タイトルと内容は必須です。", null]
     }
-    this.pageApi.save(this.selectedPage, csrfToken)
+    let promise = this.pageApi.save(this.selectedPage, csrfToken)
     .then((instance) => {
       Object.assign(this.selectedPage, instance)
     })
-    return [true, null]
+    return [true, "保存しています...", promise]
   }
 
   revert() {
@@ -51,13 +51,14 @@ class NoteController {
     if (this.selectedPage.id == null) {
       this.pages.pop()
       this.selectedPage = null
-      return
+      return [true, null, null]
     }
-    this.pageApi.destroy(this.selectedPage, csrfToken)
+    let promise = this.pageApi.destroy(this.selectedPage, csrfToken)
     .then(() => {
       this.selectedPage = null
       this.load()
     })
+    return [true, "削除しています...", promise]
   }
 
   create(csrfToken=null) {

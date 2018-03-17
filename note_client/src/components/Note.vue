@@ -55,6 +55,17 @@
     centered>
     削除してもよろしいですか？
   </b-modal>
+  <b-modal
+    ref="progressModal"
+    hide-header
+    hide-footer
+    no-fade
+    no-close-on-backdrop
+    no-close-on-esc
+    centered>
+    {{ message }}
+    <b-progress :value="10" :max="10" animated></b-progress>
+  </b-modal>
 </div>
 </template>
 
@@ -75,6 +86,13 @@ module.exports = {
       this.message = message
       this.$refs.errorModal.show()
     },
+    showProgress(message) {
+      this.message = message
+      this.$refs.progressModal.show()
+    },
+    hideProgress() {
+      this.$refs.progressModal.hide()
+    },
     selectPage(page) {
       let result, message
       [result, message] = this.controller.selectPage(page)
@@ -83,18 +101,27 @@ module.exports = {
       }
     },
     save() {
-      let result, message
-      [result, message] = this.controller.save(
+      let result, message, promise
+      [result, message, promise] = this.controller.save(
         csrfToken.getCsrfTokenFromCookie(document.cookie))
       if (!result) {
         this.showError(message)
+      } else {
+        this.showProgress(message)
+        promise.then(this.hideProgress)
       }
     },
     revert() {
       this.controller.revert()
     },
     destroy() {
-      this.controller.destroy(csrfToken.getCsrfTokenFromCookie(document.cookie))
+      let result, message, promise
+      [result, message, promise] = this.controller.destroy(
+        csrfToken.getCsrfTokenFromCookie(document.cookie))
+      if (result && promise) {
+        this.showProgress(message)
+        promise.then(this.hideProgress)
+      }
     },
     create() {
       this.controller.create()
