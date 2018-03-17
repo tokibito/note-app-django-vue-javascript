@@ -23,3 +23,9 @@ npm run webpack -- -w
 ```
 npm run clean
 ```
+
+## run test
+
+```
+npm t
+```
