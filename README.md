@@ -17,21 +17,36 @@ DjangoフレームワークとJavaScriptでアプリケーションを作るサ�
 * バックエンド
    * Python3
    * venv
+      * プロジェクトで使うPython環境を作成します
    * Djangoフレームワーク
       * Django REST Framework
+         * REST APIを作るのに便利な機能がたくさん含まれるモジュール
       * django-debug-toolbar
+         * 各種デバッグ情報をサイドバーで表示します
 * フロントエンド
    * Babel
+      * 最新の言語仕様の構文で書いたコードは、そのままだと古いブラウザなどで動かないので、Babelを使ってトランスパイルして動かせるようにします
    * webpack
+      * JavaScriptコードやCSSなど、アプリケーションを構成するファイル群を配備用にまとめます
+      * webpack.config.jsでビルドルールを設定します
+         * loaderの仕組みによりいろいろな処理ができます(babelで変換したりとか)
    * Vue.js
+      * データバインディングとコンポーネントの仕組みを提供するUIフレームワークです
    * Bootstrap
+      * BootstrapVueと組み合わせて使っています
    * Font Awesome
+      * Webフォント、CSSが提供されるので、HTMLでクラスを指定すれば使えます
    * axios
+      * REST APIクライアントです
    * ユニットテスト
       * mocha
+         * ユニットテストのフレームワークです(describe, itで記述)
       * power-assert
+         * アサーション関数
       * Sinon.JS
+         * モック
       * moxios
+         * axiosに対応したモック(スタブ)
 
 ## 構成
 
@@ -70,6 +85,9 @@ DjangoフレームワークとJavaScriptでアプリケーションを作るサ�
    * 必要になったら入れよう
 * DjangoのCSRF対策をフロントエンドからも利用する
    * Cookieに書き込まれたCSRFトークンをAPI呼び出し時に利用しています
+* Vueコンポーネントのテストはがんばらない
+   * 表示部分は変更されやすいのであんまり頑張らない
+   * Vueコンポーネントにアプリケーションロジックを書かないなら、テストもがんばらなくて済む
 
 ## Vagrant
 
