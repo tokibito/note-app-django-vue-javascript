@@ -1,5 +1,7 @@
 # Note application
 
+![ノート](note-app.png "ノート")
+
 ## make python virtualenv and activate
 
 ```
