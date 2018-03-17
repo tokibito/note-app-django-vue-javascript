@@ -15,7 +15,6 @@ class RestApi {
       let instances = []
       axios.get(this.endpoint)
       .then((response) => {
-        console.log(response)
         resolve(response.data.map(this.model.fromData))
       })
       .catch((error) => {
@@ -34,7 +33,6 @@ class RestApi {
           headers: {'X-CSRFToken': csrfToken}
         })
       .then((response) => {
-        console.log(response)
         resolve(this.model.fromData(response.data))
       })
       .catch((error) => {
@@ -53,7 +51,6 @@ class RestApi {
           headers: {'X-CSRFToken': csrfToken}
         })
       .then((response) => {
-        console.log(response)
         resolve(this.model.fromData(response.data))
       })
       .catch((error) => {
@@ -80,7 +77,6 @@ class RestApi {
           headers: {'X-CSRFToken': csrfToken}
         })
       .then((response) => {
-        console.log(response)
         resolve()
       })
       .catch((error) => {

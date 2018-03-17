@@ -12,11 +12,15 @@ describe('UrlBuilder', () => {
     let result = target.build()
     assert.equal('/foo/bar/', result.TestPath)
   })
+
   it('build with prefix', () => {
     let target = new UrlBuilder({
       TestPath: '/foo/bar/'
     }, 'https://example.com')
     let result = target.build()
-    assert.equal('https://example.com/foo/bar/', result.TestPath)
+    assert.equal(
+      'https://example.com/foo/bar/',
+      result.TestPath,
+      "prefix付きになること")
   })
 })

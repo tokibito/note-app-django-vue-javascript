@@ -27,6 +27,7 @@ DjangoフレームワークとJavaScriptでアプリケーションを作るサ�
    * Bootstrap
    * Font Awesome
    * axios
+      * moxios
    * mocha
    * power-assert
 
