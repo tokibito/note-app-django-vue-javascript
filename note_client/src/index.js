@@ -22,9 +22,9 @@ let controller = new NoteController(
   (new UrlBuilder(API_URL)).build()
 )
 
-Vue.component('index', Index)
-Vue.component('editor', Editor)
-Vue.component('note', Note)
+Vue.component('index', Index)  // ページ一覧のコンポーネント
+Vue.component('editor', Editor)  // エディタ部分のコンポーネント
+Vue.component('note', Note)  // IndexとEditor、ボタンを含むコンポーネント(クライアントアプリケーション部分)
 
 let app = new Vue({
   el: '#app',
