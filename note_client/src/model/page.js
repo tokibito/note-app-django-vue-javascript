@@ -7,10 +7,13 @@ class Page {
     this._content = content
     this.createdAt = createdAt
     this.updatedAt = createdAt
-    this.taint = taint
+    this.taint = taint  // 内容が変更されたことを保持するフラグ
     this.origin = null
   }
 
+  /*
+   * APIから受け取ったJSONからインスタンスを生成するメソッド
+   */
   static fromData(data) {
     let instance = new Page(
       data.id || null,
@@ -19,10 +22,14 @@ class Page {
       data.created_at || null,
       data.updated_at || null
     )
+    // 変更を破棄する機能のために、元データを保持
     instance.origin = data
     return instance
   }
 
+  /*
+   * インスタンスを保存用にシリアライズする
+   */
   toData() {
     return {
       id: this.id,
@@ -49,6 +56,10 @@ class Page {
     this.taint = true
   }
 
+  /*
+   * 変更を破棄する
+   * インスタンス構築時点のデータの状態に戻す
+   */
   revert() {
     if (this.origin == null) {
       this._title = ''

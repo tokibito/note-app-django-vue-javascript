@@ -1,3 +1,6 @@
+/*
+ * APIのパス定義にprefixをつけるクラス
+ */
 class UrlBuilder {
   constructor(urls, prefix=null) {
     this.urls = urls

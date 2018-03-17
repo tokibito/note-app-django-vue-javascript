@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+/*
+ * REST APIクライントのラッパー
+ * API呼び出しの結果からモデルのインスタンスを生成します
+ */
 class RestApi {
   constructor(endpoint, model) {
     this.endpoint = endpoint;
@@ -60,6 +64,7 @@ class RestApi {
   }
 
   save(instance, csrfToken=null) {
+    // idがない場合は新規、あれば更新
     if (instance.id == null) {
       return this.create(instance, csrfToken)
     } else {
