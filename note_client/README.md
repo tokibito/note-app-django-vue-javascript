@@ -1,30 +1,30 @@
-# Client Application
+# クライアントアプリケーション
 
-## install node packages
+## Node.JSのパッケージをインストールする
 
 ```
 npm i
 ```
 
-## bulid
+## アプリケーションのビルド
 
 ```
 npm run webpack
 ```
 
-## watch build
+## ファイルの変更を検知してビルド
 
 ```
 npm run webpack -- -w
 ```
 
-## clean
+## ビルドされたファイル群の削除
 
 ```
 npm run clean
 ```
 
-## run test
+## テストコードの実行
 
 ```
 npm t
