@@ -31,9 +31,11 @@ DjangoフレームワークとJavaScriptでアプリケーションを作るサ�
       * webpack.config.jsでビルドルールを設定します
          * loaderの仕組みによりいろいろな処理ができます(babelで変換したりとか)
    * Vue.js
-      * データバインディングとコンポーネントの仕組みを提供するUIフレームワークです
+      * データバインディングとコンポーネントの仕組みを提供するJavaScriptフレームワークです
    * Bootstrap
-      * BootstrapVueと組み合わせて使っています
+      * HTMLのUI部品(ナビゲーションやボタンなどいろいろ)を提供するUIフレームワークです
+      * CSSと動きのある部分に必要なJavaScriptコードが提供されます
+      * jQuery部分をVue.jsに置き換えたBootstrapVueと組み合わせて使っています
    * Font Awesome
       * Webフォント、CSSが提供されるので、HTMLでクラスを指定すれば使えます
    * axios
@@ -67,6 +69,10 @@ DjangoフレームワークとJavaScriptでアプリケーションを作るサ�
 
 * シングルページアプリケーション(SPA)にはせず、DjangoのサーバーサイドレンダリングとVue.jsを組み合わせて使う
    * ビルドしたファイルの配信は、Djangoフレームワークのstaticfilesに任せる
+* jQueryは使わない
+   * 表示制御のために、アプリケーションで大量のJavaScriptでコードを書くのを避けるため
+      * Vue.jsのデータバインディングを使えば表示制御のコードはかなり減らせます
+   * BootstrapではBootstrapVueを使います
 * Vuexはなるべく使わない
    * 依存をなるべく減らす気持ち
    * Vuexは学習コストもメンテコストも高いので、使わないで済むうちは使わない
