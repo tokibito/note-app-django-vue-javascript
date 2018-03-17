@@ -3,3 +3,5 @@ __pycache__/
 *.sqlite3
 node_modules/
 build/
+.vagrant
+*.log

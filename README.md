@@ -66,3 +66,12 @@ DjangoフレームワークとJavaScriptでアプリケーションを作るサ�
    * 必要になったら入れよう
 * DjangoのCSRF対策をフロントエンドからも利用する
    * Cookieに書き込まれたCSRFトークンをAPI呼び出し時に利用しています
+
+## Vagrant
+
+開発にはVagrantを使用しています。VirtualBoxとVagrantをインストールしていれば、同様の環境を用意できます。
+
+```
+vagrant up
+vagrant ssh
+```
