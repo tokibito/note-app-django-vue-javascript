@@ -15,6 +15,7 @@ describe('Page', () => {
     assert.equal('テストタイトル', result.title)
     assert.equal('テスト本文', result.content)
   })
+
   it('toData', () => {
     let target = new Page(123, 'テストタイトル', 'テスト本文')
     let result = target.toData()
@@ -22,18 +23,21 @@ describe('Page', () => {
     assert.equal('テストタイトル', result.title)
     assert.equal('テスト本文', result.content)
   })
+
   it('set title:taint', () => {
     let target = new Page(123, 'テストタイトル', 'テスト本文')
     assert(!target.taint, '作成時は未変更')
     target.title = 'タイトル変更'
     assert(target.taint, 'タイトル変更後は変更')
   })
+
   it('set content:taint', () => {
     let target = new Page(123, 'テストタイトル', 'テスト本文')
     assert(!target.taint, '作成時は未変更')
     target.content = '本文変更'
     assert(target.taint, '本文変更後は変更')
   })
+
   it('revert', () => {
     let target = new Page(123, 'テストタイトル', 'テスト本文')
     target.origin = {
