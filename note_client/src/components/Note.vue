@@ -62,7 +62,8 @@
     no-fade
     no-close-on-backdrop
     no-close-on-esc
-    centered>
+    centered
+    @shown="shownProgress">
     {{ message }}
     <b-progress :value="10" :max="10" animated></b-progress>
   </b-modal>
@@ -87,10 +88,18 @@ module.exports = {
       this.$refs.errorModal.show()
     },
     showProgress(message) {
+      this.progressHidden = false
       this.message = message
       this.$refs.progressModal.show()
     },
+    shownProgress(message) {
+      // 表示完了前にhideProgress()が呼ばれると閉じられないのでshownイベントで再度呼ぶ
+      if (this.progressHidden) {
+        this.$refs.progressModal.hide()
+      }
+    },
     hideProgress() {
+      this.progressHidden = true
       this.$refs.progressModal.hide()
     },
     selectPage(page) {
