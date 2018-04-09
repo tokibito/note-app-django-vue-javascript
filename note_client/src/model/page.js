@@ -6,7 +6,7 @@ class Page {
     this._title = title
     this._content = content
     this.createdAt = createdAt
-    this.updatedAt = createdAt
+    this.updatedAt = updatedAt
     this.taint = taint  // 内容が変更されたことを保持するフラグ
     this.origin = null
   }

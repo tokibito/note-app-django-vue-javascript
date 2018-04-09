@@ -26,7 +26,7 @@ Vue.component('index', Index)  // ページ一覧のコンポーネント
 Vue.component('editor', Editor)  // エディタ部分のコンポーネント
 Vue.component('note', Note)  // IndexとEditor、ボタンを含むコンポーネント(クライアントアプリケーション部分)
 
-let app = new Vue({
+new Vue({
   el: '#app',
   components: {
     Note

@@ -6,14 +6,13 @@ import axios from 'axios'
  */
 class RestApi {
   constructor(endpoint, model) {
-    this.endpoint = endpoint;
-    this.model = model;
+    this.endpoint = endpoint
+    this.model = model
   }
 
-  list() {
+  list(options={}) {
     return new Promise((resolve, reject) => {
-      let instances = []
-      axios.get(this.endpoint)
+      axios.get(this.endpoint, options)
       .then((response) => {
         resolve(response.data.map(this.model.fromData))
       })
@@ -24,14 +23,17 @@ class RestApi {
     })
   }
 
-  create(instance, csrfToken=null) {
+  create(instance, csrfToken=null, options={}) {
+    let sendOptions = {}
+    Object.assign(sendOptions, options, {
+      headers: {'X-CSRFToken': csrfToken}
+    })
     return new Promise((resolve, reject) => {
       axios.post(
         this.endpoint,
         instance.toData(),
-        {
-          headers: {'X-CSRFToken': csrfToken}
-        })
+        sendOptions
+      )
       .then((response) => {
         resolve(this.model.fromData(response.data))
       })
@@ -42,14 +44,17 @@ class RestApi {
     })
   }
 
-  update(instance, csrfToken=null) {
+  update(instance, csrfToken=null, options={}) {
+    let sendOptions = {}
+    Object.assign(sendOptions, options, {
+      headers: {'X-CSRFToken': csrfToken}
+    })
     return new Promise((resolve, reject) => {
       axios.put(
         this.endpoint + `${instance.id}/`,
         instance.toData(),
-        {
-          headers: {'X-CSRFToken': csrfToken}
-        })
+        sendOptions
+      )
       .then((response) => {
         resolve(this.model.fromData(response.data))
       })
@@ -60,12 +65,12 @@ class RestApi {
     })
   }
 
-  save(instance, csrfToken=null) {
+  save(instance, csrfToken=null, options={}) {
     // idがない場合は新規、あれば更新
     if (instance.id == null) {
-      return this.create(instance, csrfToken)
+      return this.create(instance, csrfToken, options)
     } else {
-      return this.update(instance, csrfToken)
+      return this.update(instance, csrfToken, options)
     }
   }
 
@@ -76,7 +81,7 @@ class RestApi {
         {
           headers: {'X-CSRFToken': csrfToken}
         })
-      .then((response) => {
+      .then(() => {
         resolve()
       })
       .catch((error) => {

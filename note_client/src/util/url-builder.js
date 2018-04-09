@@ -8,7 +8,7 @@ class UrlBuilder {
   }
 
   build() {
-    let result = {};
+    let result = {}
     for(let key of Object.keys(this.urls)) {
       result[key] = this.prefix + this.urls[key]
     }

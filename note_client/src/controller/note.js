@@ -88,7 +88,7 @@ class NoteController {
    * 新規ページを作る
    * バックエンドへの保存はしません
    */
-  create(csrfToken=null) {
+  create() {
     if (this.selectedPage && this.selectedPage.taint) {
       return
     }
