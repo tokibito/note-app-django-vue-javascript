@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "webpack": "webpack --mode development",
-    "clean": "rm build/*.js"
+    "clean": "rm build/*.js",
+    "eslint": "eslint src/"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "bootstrap-vue": "^2.0.0-rc.2",
     "cookie": "^0.3.1",
     "css-loader": "^0.28.10",
+    "eslint": "^4.19.1",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "mocha": "^5.0.4",
