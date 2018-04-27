@@ -1,6 +1,6 @@
-Django==2.0.2
-ipython==6.2.1
-djangorestframework==3.7.7
+Django==2.0.4
+ipython==6.3.1
+djangorestframework==3.8.2
 coreapi==2.3.3
 django-debug-toolbar==1.9.1
 flake8==3.5.0
