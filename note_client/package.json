@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha",
     "webpack": "webpack --mode development",
+    "webpack-production": "webpack --mode production",
     "clean": "rm build/*.js",
     "eslint": "eslint src/"
   },
