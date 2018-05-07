@@ -12,6 +12,8 @@
 
 DjangoフレームワークとJavaScriptでアプリケーションを作るサンプルコードとして作成しました。
 
+**このリポジトリのコードではVuexを使っていません。Vuex対応版は[note-app-django-vuex](https://github.com/tokibito/note-app-django-vuex)になります。**
+
 以下の要素を含んでいます:
 
 * バックエンド
